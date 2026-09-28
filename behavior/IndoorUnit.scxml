@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- @hvac/indoor. States of IndoorUnit. No dependency events. -->
+<scxml xmlns="http://www.w3.org/2005/07/scxml"
+       version="1.0"
+       datamodel="ecmascript"
+       initial="off"
+       name="IndoorUnit">
+  <datamodel>
+    <data id="fanRpm" expr="0"/>
+    <data id="coilC" expr="24"/>
+  </datamodel>
+
+  <state id="off">
+    <transition event="user.fan" target="fan_only"/>
+    <transition event="user.cool" target="cooling"/>
+  </state>
+
+  <state id="fan_only">
+    <onentry>
+      <assign location="fanRpm" expr="780"/>
+    </onentry>
+    <onexit>
+      <assign location="fanRpm" expr="0"/>
+    </onexit>
+    <transition event="user.off" target="off"/>
+    <transition event="user.cool" target="cooling"/>
+  </state>
+
+  <state id="cooling">
+    <onentry>
+      <assign location="fanRpm" expr="980"/>
+    </onentry>
+    <onexit>
+      <assign location="fanRpm" expr="0"/>
+    </onexit>
+    <!-- Indoor does not wait on outdoor packages. The outdoor unit is a sibling, not a dependency. -->
+    <transition event="user.off" target="off"/>
+    <transition event="user.fan" target="fan_only"/>
+    <transition event="coil.freeze" target="off"/>
+  </state>
+</scxml>

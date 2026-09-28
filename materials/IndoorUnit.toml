@@ -1,0 +1,61 @@
+# Material artifact for @hvac/indoor.
+# Constituent ids match part names in model/IndoorUnit.sysml.
+# Masses are one indoor unit, illustrative catalogue values.
+
+[assembly]
+package = "@hvac/indoor"
+part = "IndoorUnit"
+cad = "indoor assembly.SLDPRT"
+unit_mass_kg = 9.4
+
+[[constituent]]
+id = "housing"
+sysml_part = "AbsHousing"
+material = "ABS"
+grade = "injection, UV-stabilized"
+role = "enclosure"
+mass_kg = 2.6
+density_g_cm3 = 1.05
+
+[[constituent]]
+id = "drainPan"
+sysml_part = "PolypropyleneDrainPan"
+material = "polypropylene"
+grade = "homopolymer"
+role = "condensate pan"
+mass_kg = 0.45
+density_g_cm3 = 0.90
+
+[[constituent]]
+id = "fins"
+sysml_part = "AluminumFinPack"
+owner = "IndoorEvaporator"
+material = "aluminum"
+grade = "AA1100-O"
+role = "evaporator fins"
+mass_kg = 0.85
+density_g_cm3 = 2.71
+notes = "16 FPI, 2 rows, face area 0.28 m2"
+
+[[constituent]]
+id = "tubes"
+sysml_part = "CopperTubeCircuit"
+owner = "IndoorEvaporator"
+material = "copper"
+grade = "C12200"
+role = "refrigerant circuit"
+mass_kg = 1.15
+density_g_cm3 = 8.94
+tube_od_mm = 7.0
+
+[[constituent]]
+id = "wheel"
+sysml_part = "AbsCrossFlowWheel"
+owner = "IndoorCrossFlowFan"
+material = "ABS"
+grade = "injection"
+role = "cross-flow impeller"
+mass_kg = 0.32
+density_g_cm3 = 1.05
+diameter_mm = 92
+length_mm = 640

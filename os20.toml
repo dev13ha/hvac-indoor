@@ -1,0 +1,5 @@
+[package]
+name = "@hvac/indoor"
+version = "1.0.0"
+edition = "2026"
+description = "Indoor unit. No package dependencies. Geometry is indoor assembly.SLDPRT."
