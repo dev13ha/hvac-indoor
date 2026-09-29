@@ -1,5 +1,65 @@
 [package]
 name = "@hvac/indoor"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2026"
 description = "Indoor unit. No package dependencies. Geometry is indoor assembly.SLDPRT."
+
+[[artifacts]]
+name = "indoor-geometry"
+kind = "geometry"
+format = "sldprt"
+
+[artifacts.semantic]
+relation = "core:represents"
+target = "os20:@hvac/indoor"
+
+[artifacts.source]
+provider = "github"
+repo = "dev13ha/hvac-indoor"
+revision = "ccfc2339c36cbdbea2371e50b490f8b98c2ee4f9"
+path = "indoor assembly.SLDPRT"
+
+[[artifacts]]
+name = "indoor-model"
+kind = "model"
+format = "sysml"
+
+[artifacts.semantic]
+relation = "core:describes"
+target = "os20:@hvac/indoor"
+
+[artifacts.source]
+provider = "github"
+repo = "dev13ha/hvac-indoor"
+revision = "ccfc2339c36cbdbea2371e50b490f8b98c2ee4f9"
+path = "model/IndoorUnit.sysml"
+
+[[artifacts]]
+name = "indoor-behavior"
+kind = "behavior"
+format = "scxml"
+
+[artifacts.semantic]
+relation = "core:simulates"
+target = "os20:@hvac/indoor"
+
+[artifacts.source]
+provider = "github"
+repo = "dev13ha/hvac-indoor"
+revision = "ccfc2339c36cbdbea2371e50b490f8b98c2ee4f9"
+path = "behavior/IndoorUnit.scxml"
+
+[[artifacts]]
+name = "indoor-materials"
+kind = "materials"
+format = "toml"
+
+[artifacts.semantic]
+relation = "core:specifies"
+target = "os20:@hvac/indoor"
+
+[artifacts.source]
+provider = "github"
+repo = "dev13ha/hvac-indoor"
+revision = "ccfc2339c36cbdbea2371e50b490f8b98c2ee4f9"
+path = "materials/IndoorUnit.toml"
